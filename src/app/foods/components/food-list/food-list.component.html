@@ -1,0 +1,20 @@
+<p-table [value]="foods">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>FoodName</th>
+      <th>Ingredients</th>
+      <th>Price</th>
+      <th>FoodImage</th>
+      <!--<th>Availability</th>-->
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-food>
+    <tr>
+      <td>{{food.foodName}}</td>
+      <td>{{food.ingredients}}</td>
+      <td>{{food.price}}</td>
+      <td>{{food.foodImage}}</td>
+      <!--<td>{{food.availability}}</td>-->
+    </tr>
+  </ng-template>
+</p-table>

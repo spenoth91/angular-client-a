@@ -4,4 +4,5 @@ export class APIEndpointURLs {
   // User
   public static readonly userUrl = APIEndpointURLs.baseUrl + '/user';
   public static readonly allUser = APIEndpointURLs.userUrl + '/all';
+  public static readonly foodUrl = APIEndpointURLs.baseUrl + '/food';
 }
