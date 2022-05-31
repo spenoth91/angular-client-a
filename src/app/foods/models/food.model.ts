@@ -4,6 +4,6 @@ export class Food {
   calories: number;
   ingredients: string;
   price: number;
-  /*foodImage: string;**/
+  foodImage: string;
   availability: boolean;
 }
