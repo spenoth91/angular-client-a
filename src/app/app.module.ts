@@ -12,14 +12,19 @@ import {ButtonModule} from 'primeng/button';
 import {RippleModule} from 'primeng/ripple';
 import {DialogModule} from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {InputNumberModule} from "primeng/inputnumber";
-import {FormsModule} from "@angular/forms";
+import {InputNumberModule} from 'primeng/inputnumber';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './account/component/login/login.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    FoodListComponent
+    FoodListComponent,
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,8 @@ import {FormsModule} from "@angular/forms";
     DialogModule,
     BrowserAnimationsModule,
     InputNumberModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
