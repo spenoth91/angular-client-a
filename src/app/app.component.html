@@ -1,11 +1,13 @@
-<div style="margin-left: 20%; margin-right: 20%">
+<div class="centered">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
       <!--<a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>-->
       <a class="nav-item nav-link" routerLink="/foods" routerLinkActive="active">Foods</a>
+      <a *ngIf="!isLoggedIn()" class="nav-item nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+      <a *ngIf="isLoggedIn()" class="nav-item nav-link" routerLink="/stuff" routerLinkActive="active">Stuff</a>
+      <a *ngIf="isLoggedIn()" class="nav-item nav-link" (click)="logout()"  routerLinkActive="active">Logout</a>
     </div>
   </nav>
 </div>
-
 <router-outlet></router-outlet>
