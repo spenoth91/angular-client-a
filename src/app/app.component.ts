@@ -17,5 +17,7 @@ export class AppComponent {
   public logout() {
     this.auth.logout();
   }
-
+  public profile(){
+    this.auth.getUserDetails();
+  }
 }

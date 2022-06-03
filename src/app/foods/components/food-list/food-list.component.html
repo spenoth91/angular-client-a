@@ -19,10 +19,11 @@
         <!--<td>{{food.availability}}</td>-->
         <td>
           <!--<button type="button" pButton pRipple icon="pi pi-plus"></button>-->
-          <p-button (click)="showBasicDialog()" icon="pi pi-plus" label="Add"></p-button>
+          <!--<p-button (click)="showBasicDialog()" icon="pi pi-plus" label="Add"></p-button>-->
+          <p-button (click)="showAddToCart(food)" icon="pi pi-plus" label="Add"></p-button>
           <p-dialog header="Item Amount" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
             <p>Please enter the amount!</p>
-            <p-inputNumber
+            <p-inputNumber [(ngModel)]="amount"
               [showButtons]="true"
               buttonLayout="horizontal"
               spinnerMode="horizontal"
@@ -34,9 +35,10 @@
               [min]="1"
               [max]="20"
             >
+
             </p-inputNumber>
             <ng-template pTemplate="footer">
-              <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text"></p-button>
+              <p-button icon="pi pi-check" (click)="displayBasic=false; addToCart()" label="Ok" styleClass="p-button-text"></p-button>
               <p-button icon="pi pi-times" (click)="displayBasic=false" label="Cancel"></p-button>
             </ng-template>
           </p-dialog>

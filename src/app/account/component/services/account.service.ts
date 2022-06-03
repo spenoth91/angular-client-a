@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
 
 // @ts-ignore
@@ -30,7 +30,7 @@ export class AccountService {
       Authorization: 'Basic ' + btoa(email + ':' + password)
     });
     return this.http.post<any>(
-      APIEndpointURLs.loginUrl, {}, {headers} ).pipe(
+      APIEndpointURLs.loginUrl, {}, {headers}).pipe(
       map(response => {
         const result = response[this.TOKEN];
         if (result) {
@@ -68,5 +68,24 @@ export class AccountService {
 
   getToken(): string {
     return localStorage.getItem(this.TOKEN);
+  }
+
+  getUserDetails(): User {
+    const token = this.getToken();
+    let payload;
+    if (token) {
+      payload = token.split('.')[1];
+      payload = window.atob(payload);
+      return JSON.parse(payload);
+    } else {
+      return null;
+    }
+  }
+
+  profile(email): Observable<any>{
+    return this.http.get(`/user/profile/${email}`,
+      {
+        headers: {Authorization: `${this.getToken()}`}
+      });
   }
 }
