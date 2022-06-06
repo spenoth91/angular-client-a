@@ -1,0 +1,41 @@
+<div class="centered">
+  <p-table [value]="foods" scrollHeight="400px" frozenWidth="400px">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%">Name</th>
+        <th style="width: 25%">Image</th>
+        <th style="width: 10%">Price</th>
+        <th style="width: 15%">Amount</th>
+        <th style="width: 20%">Total</th>
+        <th style="width: 10%"></th>
+        <!--<th>Availability</th>-->
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-food>
+      <tr>
+        <td>{{food.foodName}}</td>
+        <td><img src="{{food.foodImage}}" alt=""></td>
+        <td>{{food.price}} RON</td>
+        <td>{{food.amount}}</td>
+        <td>{{food.total}}</td>
+
+
+        <td>
+          <p-button (click)="removeItem(food)" icon="pi pi-trash" ></p-button>
+        </td>
+      </tr>
+    </ng-template>
+
+      <ng-template pTemplate="footer">
+        <tr>
+          <th style="width: 20%"><p-button (click)="emptyCart()" label="Empty Cart"></p-button></th>
+          <th style="width: 20%"><p-button routerLink="/foods" label="Shop More"></p-button></th>
+          <th style="width: 20%"><p-button (click)="orderFood()" label="Order"></p-button></th>
+          <th style="width: 40%"><strong>Grand Total : {{grandTotal}} RON</strong></th>
+        </tr>
+      </ng-template>
+
+  </p-table>
+
+</div>
+
