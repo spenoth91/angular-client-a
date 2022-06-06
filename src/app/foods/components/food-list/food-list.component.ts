@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {Food} from '../../models/food.model';
 import {PrimeNGConfig} from 'primeng/api';
 import {ActivatedRoute} from '@angular/router';
+import {CartService} from '../../../cart/services/cart.service';
 
 @Component({
   selector: 'app-food-list',
@@ -19,7 +20,7 @@ export class FoodListComponent implements OnInit, OnDestroy {
   amount: number;
 
 
-  constructor(private foodService: FoodService, private primengConfig: PrimeNGConfig) { }
+  constructor(private foodService: FoodService, private primengConfig: PrimeNGConfig, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.subscription = this.foodService.getAll().subscribe(data => this.foods = data);
@@ -36,14 +37,8 @@ export class FoodListComponent implements OnInit, OnDestroy {
     }
   }
 
-  showAddToCart(food: any) {
-    this.food = food;
-    this.amount = 1;
-    this.displayBasic = true;
-  }
-
-  addToCart(){
-    console.log('ordered ' + this.amount + ' of ' + this.food.id);
+  addToCart(food: any){
+    this.cartService.addToCart(food);
   }
 }
 
