@@ -18,11 +18,4 @@ export class UserService {
   public getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(APIEndpointURLs.allUser);
   }
-
-  public getMyStuff(): Observable<Stuff[]> {
-    const headers = new HttpHeaders({
-      Authorization: 'Bearer ' + this.auth.getToken()
-    });
-    return this.http.get<Stuff[]>(APIEndpointURLs.myStuff, {headers});
-  }
 }

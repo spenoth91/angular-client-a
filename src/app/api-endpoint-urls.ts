@@ -6,10 +6,11 @@ export class APIEndpointURLs {
   public static readonly allUser = APIEndpointURLs.userUrl + '/all';
   public static readonly foodUrl = APIEndpointURLs.baseUrl + '/food';
   public static readonly user = APIEndpointURLs.userUrl + '/id/';
-  public static readonly myStuff = APIEndpointURLs.userUrl + '/stuff';
 
   // Auth
   public static readonly authUrl = APIEndpointURLs.baseUrl + '/auth';
   public static readonly loginUrl = APIEndpointURLs.authUrl + '/login';
-
+  public static readonly profile = APIEndpointURLs.authUrl + '/profile';
+  public static readonly cartUrl = APIEndpointURLs.baseUrl + '/cart';
+  public static readonly orderUrl = APIEndpointURLs.baseUrl + '/order';
 }

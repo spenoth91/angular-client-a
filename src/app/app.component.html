@@ -4,10 +4,13 @@
       <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
       <!--<a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>-->
       <a class="nav-item nav-link" routerLink="/foods" routerLinkActive="active">Foods</a>
-      <a *ngIf="!isLoggedIn()" class="nav-item nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-      <a *ngIf="isLoggedIn()" class="nav-item nav-link" routerLink="/stuff" routerLinkActive="active">Stuff</a>
-      <a *ngIf="isLoggedIn()" class="nav-item nav-link" (click)="logout()"  routerLinkActive="active">Logout</a>
     </div>
+    <ul class="nav navbar-nav ml-auto mr-1">
+      <li><a *ngIf="!isLoggedIn()" class="nav-item nav-link navbar-right" routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li><a *ngIf="isLoggedIn()" class="nav-item nav-link navbar-right" routerLink="/profile " routerLinkActive="active">{{auth.currentUser.getValue().name}}</a></li>
+      <li><a *ngIf="isLoggedIn()" class="nav-item nav-link navbar-right" (click)="logout()"  routerLinkActive="active">Logout</a></li>
+      <li><a *ngIf="isLoggedIn()" class="nav-item nav-link navbar-right pi pi-shopping-cart" routerLink="/cart" routerLinkActive="active"> {{totalItem}}</a></li>
+    </ul>
   </nav>
 </div>
 <router-outlet></router-outlet>

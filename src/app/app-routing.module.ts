@@ -5,6 +5,7 @@ import {FoodListComponent} from './foods/components/food-list/food-list.componen
 import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './account/component/login/login.component';
 import {AuthGuard} from './account/component/services/auth.guard';
+import {CartComponent} from './cart/components/cart/cart.component';
 
 
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'foods', component: FoodListComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  {path: 'cart', component: CartComponent}
 
 ];
 
