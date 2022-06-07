@@ -12,5 +12,5 @@ export class APIEndpointURLs {
   public static readonly loginUrl = APIEndpointURLs.authUrl + '/login';
   public static readonly profile = APIEndpointURLs.authUrl + '/profile';
   public static readonly cartUrl = APIEndpointURLs.baseUrl + '/cart';
-
+  public static readonly orderUrl = APIEndpointURLs.baseUrl + '/order';
 }

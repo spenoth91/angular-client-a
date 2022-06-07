@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {Order} from '../models/order.model';
+import {OrderItem} from '../models/orderitem.model';
+import {Food} from "../../foods/models/food.model";
+import {APIEndpointURLs} from "../../api-endpoint-urls";
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +13,10 @@ export class CartService {
 
   public cartItemList: any = [];
   public foodList = new BehaviorSubject<any>([]);
-  public search = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) { }
   getFoods(){
     return this.foodList.asObservable();
-  }
-
-  setProduct(food: any){
-    this.cartItemList.push(...food);
-    this.foodList.next(food);
   }
   addToCart(food: any){
     this.cartItemList.push(food);
@@ -45,7 +43,21 @@ export class CartService {
     this.cartItemList = [];
     this.foodList.next(this.cartItemList);
   }
-  orderFood(){
 
+  orderFood(address: any){
+    const order = new Order();
+    order.orderAddress = address;
+    order.userId = 1;
+    order.orderItems = [];
+    this.cartItemList.forEach((food) => {
+      const orderItem = new OrderItem();
+      orderItem.foodId = food.id;
+      orderItem.amount = 1;
+      order.orderItems.push(orderItem);
+    });
+
+    this.http.post<Order>(APIEndpointURLs.orderUrl, order).subscribe(res => {
+      console.log(res);
+    });
   }
 }

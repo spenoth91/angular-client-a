@@ -17,6 +17,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './account/component/login/login.component';
 import { CartComponent } from './cart/components/cart/cart.component';
+import {InputTextModule} from "primeng/inputtext";
 
 
 @NgModule({
@@ -28,19 +29,20 @@ import { CartComponent } from './cart/components/cart/cart.component';
     LoginComponent,
     CartComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    TableModule,
-    ButtonModule,
-    RippleModule,
-    DialogModule,
-    BrowserAnimationsModule,
-    InputNumberModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        TableModule,
+        ButtonModule,
+        RippleModule,
+        DialogModule,
+        BrowserAnimationsModule,
+        InputNumberModule,
+        FormsModule,
+        ReactiveFormsModule,
+        InputTextModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

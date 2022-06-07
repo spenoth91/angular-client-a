@@ -1,5 +1,5 @@
 <div class="centered">
-  <p-table [value]="foods" scrollHeight="400px" frozenWidth="400px">
+  <p-table [value]="foods" frozenWidth="400px" scrollHeight="400px">
     <ng-template pTemplate="header">
       <tr>
         <th style="width: 20%">Name</th>
@@ -11,10 +11,10 @@
         <!--<th>Availability</th>-->
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-food>
+    <ng-template let-food pTemplate="body">
       <tr>
         <td>{{food.foodName}}</td>
-        <td><img src="{{food.foodImage}}" alt=""></td>
+        <td><img alt="" src="{{food.foodImage}}"></td>
         <td>{{food.price}} RON</td>
         <td>{{food.amount}}</td>
         <td>{{food.total}}</td>
@@ -28,11 +28,21 @@
 
       <ng-template pTemplate="footer">
         <tr>
+          <td> <div>Please enter the shipping address:</div></td>
+          <td><input [(ngModel)]="address" pInputText placeholder="Address" type="text"></td>
+        </tr>
+        <tr>
           <th style="width: 20%"><p-button (click)="emptyCart()" label="Empty Cart"></p-button></th>
-          <th style="width: 20%"><p-button routerLink="/foods" label="Shop More"></p-button></th>
-          <th style="width: 20%"><p-button (click)="orderFood()" label="Order"></p-button></th>
+          <th style="width: 20%"><p-button label="Shop More" routerLink="/foods"></p-button></th>
+          <th style="width: 20%">
+            <p-button (click)="orderFood()" label="Order"></p-button>
+            <p-dialog [(visible)]="displayBasic" [baseZIndex]="10000" [style]="{width: '50vw'}">
+              <p>Your Order has been placed!</p>
+            </p-dialog>
+          </th>
           <th style="width: 40%"><strong>Grand Total : {{grandTotal}} RON</strong></th>
         </tr>
+
       </ng-template>
 
   </p-table>

@@ -10,6 +10,8 @@ export class CartComponent implements OnInit {
 
   public foods: any = [];
   public grandTotal !: number;
+  public address: string;
+  private displayBasic: boolean;
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
@@ -27,6 +29,9 @@ export class CartComponent implements OnInit {
   }
 
   orderFood() {
-    this.cartService.orderFood();
+    this.cartService.orderFood(this.address);
+    console.log('this is the address: ' + this.address);
+    this.displayBasic = true;
+    this.emptyCart();
   }
 }
